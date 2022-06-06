@@ -1,37 +1,30 @@
 package algorithm;
 
-import java.util.Arrays;
+import algorithm.Utils.ProcessListener;
 
 /**
  * 快速排序
  */
-public class Sort2 {
+public class FastSort {
 
     public static void main(String[] args) {
-        int[] arr1 = Utils.getArray();
-        int[] arr2 = Arrays.copyOf(arr1, arr1.length);
-        boolean b = true;
-        for (int i = 0; i < 500000; i++) {
-            process(arr1, 0, arr1.length - 1);
-            Utils.sort(arr2);
-            if (!Utils.arrEquals(arr1, arr2)) {
-                b = false;
-                break;
+        int[] arr = Utils.getArray();
+        Utils.textProcess(arr, new ProcessListener() {
+
+            @Override
+            public void process() {
+                fastSort(arr, 0, arr.length - 1);
             }
-        }
-        if (b) {
-            System.out.println("测试成功");
-        } else {
-            System.out.println("测试失败");
-        }
+
+        });
     }
 
-    public static void process(int[] arr, int L, int R) {
+    public static void fastSort(int[] arr, int L, int R) {
         if (L < R) {
             Utils.swap(arr, L + (int) Math.random() * (R - L + 1), R);
             int[] p = partition(arr, L, R);
-            process(arr, L, p[0] - 1);
-            process(arr, p[1] + 1, R);
+            fastSort(arr, L, p[0] - 1);
+            fastSort(arr, p[1] + 1, R);
         }
     }
 

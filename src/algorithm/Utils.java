@@ -34,4 +34,27 @@ public class Utils {
         arr[index2] = temp;
     }
 
+    public static boolean textProcess(int[] arr, ProcessListener process) {
+        int[] arr2 = Arrays.copyOf(arr, arr.length);
+        boolean b = true;
+        for (int i = 0; i < 500000; i++) {
+            process.process();
+            Utils.sort(arr2);
+            if (!Utils.arrEquals(arr, arr2)) {
+                b = false;
+                break;
+            }
+        }
+        if (b) {
+            System.out.println("测试成功");
+        } else {
+            System.out.println("测试失败");
+        }
+        return b;
+    }
+
+    public static interface ProcessListener {
+        void process();
+    }
+
 }

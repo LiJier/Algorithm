@@ -1,39 +1,32 @@
 package algorithm;
 
-import java.util.Arrays;
+import algorithm.Utils.ProcessListener;
 
 /**
  * 归并排序
  */
-public class Sort1 {
+public class MergeSort {
 
     public static void main(String[] args) {
-        int[] arr1 = Utils.getArray();
-        int[] arr2 = Arrays.copyOf(arr1, arr1.length);
-        boolean b = true;
-        for (int i = 0; i < 500000; i++) {
-            process(arr1, 0, arr1.length - 1);
-            Utils.sort(arr2);
-            if (!Utils.arrEquals(arr1, arr2)) {
-                b = false;
-                break;
+        int[] arr = Utils.getArray();
+        Utils.textProcess(arr, new ProcessListener() {
+
+            @Override
+            public void process() {
+                MergeSort.mergeSort(arr, 0, arr.length - 1);
             }
-        }
-        if (b) {
-            System.out.println("测试成功");
-        } else {
-            System.out.println("测试失败");
-        }
+
+        });
     }
 
-    public static void process(int[] arr, int L, int R) {
+    public static void mergeSort(int[] arr, int L, int R) {
         if (L == R) {
             return;
         }
         // 求L与R的中点
         int mid = L + ((R - L) >> 1);
-        process(arr, L, mid);
-        process(arr, mid + 1, R);
+        mergeSort(arr, L, mid);
+        mergeSort(arr, mid + 1, R);
         merge(arr, L, mid, R);
     }
 
