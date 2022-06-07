@@ -47,49 +47,7 @@ public class LeetCode15 {
         int l = 0;
         int r = nums.length - 1;
         int m = L + 1;
-        while (l <= L || r >= R) {
-            int numL = nums[l];
-            int numR = nums[r];
-            int sumLR = numL + numR;
-            if (sumLR > 0) {
-                for (int i = l + 1; i < L; i++) {
-                    int numM = nums[i];
-                    if (sumLR + numM == 0) {
-                        List<Integer> sumList = new ArrayList<>();
-                        sumList.add(numL);
-                        sumList.add(numM);
-                        sumList.add(numR);
-                        list.add(sumList);
-                        break;
-                    }
-                }
-                l++;
-            } else if (sumLR < 0) {
-                for (int i = r - 1; i > R; i--) {
-                    int numM = nums[i];
-                    if (sumLR + numM == 0) {
-                        List<Integer> sumList = new ArrayList<>();
-                        sumList.add(numL);
-                        sumList.add(numM);
-                        sumList.add(numR);
-                        list.add(sumList);
-                        break;
-                    }
-                }
-                r--;
-            } else {
-                int numM = nums[m];
-                if (numM == 0) {
-                    List<Integer> sumList = new ArrayList<>();
-                    sumList.add(numL);
-                    sumList.add(numM);
-                    sumList.add(numR);
-                    list.add(sumList);
-                }
-                l++;
-                r--;
-            }
-        }
+        
         return list;
     }
 
