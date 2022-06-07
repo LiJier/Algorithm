@@ -35,10 +35,15 @@ public class Utils {
     }
 
     public static boolean textProcess(int[] arr, ProcessListener process) {
+        int[] temp = Arrays.copyOf(arr, arr.length);
         int[] arr2 = Arrays.copyOf(arr, arr.length);
         boolean b = true;
         for (int i = 0; i < 500000; i++) {
-            process.process();
+            try {
+                process.process();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             Utils.sort(arr2);
             if (!Utils.arrEquals(arr, arr2)) {
                 b = false;
@@ -49,6 +54,9 @@ public class Utils {
             System.out.println("测试成功");
         } else {
             System.out.println("测试失败");
+            System.out.println(Arrays.toString(temp));
+            System.out.println(Arrays.toString(arr));
+
         }
         return b;
     }
