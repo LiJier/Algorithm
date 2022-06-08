@@ -1,5 +1,7 @@
 package leetcode;
 
+import org.w3c.dom.Node;
+
 /**
  * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
  * 请你将两个数相加，并以相同形式返回一个表示和的链表。
@@ -20,7 +22,11 @@ public class LeetCode2 {
         node4.next = node5;
         ListNode node6 = new ListNode(4);
         node5.next = node6;
-        addTwoNumbers(node1, node4);
+        ListNode node = addTwoNumbers(node1, node4);
+        while (node != null) {
+            System.out.print(node.val);
+            node = node.next;
+        }
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
