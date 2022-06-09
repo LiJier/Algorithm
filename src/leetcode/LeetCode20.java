@@ -2,8 +2,6 @@ package leetcode;
 
 import java.util.Stack;
 
-import javax.lang.model.element.Element;
-
 /**
  * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
  * 

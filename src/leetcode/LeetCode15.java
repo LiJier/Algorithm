@@ -1,9 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import algorithm.Utils;
@@ -17,11 +15,11 @@ import algorithm.Utils;
 public class LeetCode15 {
 
     public static void main(String[] args) {
-        int[] arr = Utils.getArray();
-        long time1 = System.currentTimeMillis();
-        List<List<Integer>> list = threeSum(arr);
-        long time2 = System.currentTimeMillis();
-        System.out.println("耗时：" + (time2 - time1));
+        // int[] arr = Utils.getArray();
+        // long time1 = System.currentTimeMillis();
+        // List<List<Integer>> list = threeSum(arr);
+        // long time2 = System.currentTimeMillis();
+        // System.out.println("耗时：" + (time2 - time1));
         // Collections.sort(list, new Comparator<List<Integer>>() {
 
         // @Override
