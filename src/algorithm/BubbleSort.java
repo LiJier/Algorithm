@@ -8,11 +8,10 @@ import algorithm.Utils.ProcessListener;
 public class BubbleSort {
 
     public static void main(String[] args) {
-        int[] arr = Utils.getArray();
-        Utils.textProcess(arr, new ProcessListener() {
+        Utils.textProcess(new ProcessListener() {
 
             @Override
-            public void process() {
+            public void process(int[] arr) {
                 bubbleSort(arr);
             }
 

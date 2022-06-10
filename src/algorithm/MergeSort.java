@@ -8,15 +8,21 @@ import algorithm.Utils.ProcessListener;
 public class MergeSort {
 
     public static void main(String[] args) {
-        int[] arr = Utils.getArray();
-        Utils.textProcess(arr, new ProcessListener() {
+        Utils.textProcess( new ProcessListener() {
 
             @Override
-            public void process() {
-                MergeSort.mergeSort(arr, 0, arr.length - 1);
+            public void process(int[] arr) {
+                MergeSort.mergeSort(arr);
             }
 
         });
+    }
+
+    public static void mergeSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        mergeSort(arr, 0, arr.length - 1);
     }
 
     public static void mergeSort(int[] arr, int L, int R) {

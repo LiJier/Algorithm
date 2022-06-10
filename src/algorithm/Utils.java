@@ -7,8 +7,8 @@ public class Utils {
 
     public static int[] getArray() {
         Random random = new Random();
-        int length = random.nextInt(20);
-        int max = random.nextInt(1000);
+        int length = random.nextInt(10);
+        int max = 10;
         return random.ints(length, -max, max).toArray();
     }
 
@@ -34,35 +34,24 @@ public class Utils {
         arr[index2] = temp;
     }
 
-    public static boolean textProcess(int[] arr, ProcessListener process) {
-        int[] temp = Arrays.copyOf(arr, arr.length);
-        int[] arr2 = Arrays.copyOf(arr, arr.length);
-        boolean b = true;
-        for (int i = 0; i < 500000; i++) {
-            try {
-                process.process();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    public static void textProcess(ProcessListener process) {
+        for (int i = 0; i < 10000; i++) {
+            int[] arr1 = getArray();
+            int[] arr2 = Arrays.copyOf(arr1, arr1.length);
+            int[] temp = Arrays.copyOf(arr1, arr1.length);
+            process.process(arr1);
             Utils.sort(arr2);
-            if (!Utils.arrEquals(arr, arr2)) {
-                b = false;
+            if (!Utils.arrEquals(arr1, arr2)) {
+                System.out.println("测试失败");
+                System.out.println(Arrays.toString(temp));
                 break;
             }
         }
-        if (b) {
-            System.out.println("测试成功");
-        } else {
-            System.out.println("测试失败");
-            System.out.println(Arrays.toString(temp));
-            System.out.println(Arrays.toString(arr));
-
-        }
-        return b;
+        System.out.println("测试成功");
     }
 
     public static interface ProcessListener {
-        void process();
+        void process(int[] arr);
     }
 
 }

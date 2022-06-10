@@ -8,11 +8,10 @@ import algorithm.Utils.ProcessListener;
 public class SelectSort {
 
     public static void main(String[] args) {
-        int[] arr = Utils.getArray();
-        Utils.textProcess(arr, new ProcessListener() {
+        Utils.textProcess(new ProcessListener() {
 
             @Override
-            public void process() {
+            public void process(int[] arr) {
                 selectSort(arr);
             }
 
@@ -20,6 +19,9 @@ public class SelectSort {
     }
 
     public static void selectSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
         for (int i = 0; i < arr.length; i++) {
             int minValueIndex = i;
             for (int j = i; j < arr.length; j++) {

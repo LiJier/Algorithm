@@ -8,15 +8,21 @@ import algorithm.Utils.ProcessListener;
 public class FastSort {
 
     public static void main(String[] args) {
-        int[] arr = Utils.getArray();
-        Utils.textProcess(arr, new ProcessListener() {
+        Utils.textProcess(new ProcessListener() {
 
             @Override
-            public void process() {
-                fastSort(arr, 0, arr.length - 1);
+            public void process(int[] arr) {
+                fastSort(arr);
             }
 
         });
+    }
+
+    public static void fastSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        fastSort(arr, 0, arr.length - 1);
     }
 
     public static void fastSort(int[] arr, int L, int R) {
