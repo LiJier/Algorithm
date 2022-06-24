@@ -16,8 +16,8 @@ public class LeetCode5 {
         char[] charArr = s.toCharArray();
         String palindrome = "";
         for (int i = 0; i < charArr.length; i++) {
-            String s1 = findPalindrome(s, i, i);
-            String s2 = findPalindrome(s, i, i + 1);
+            String s1 = findPalindrome(charArr, i, i);
+            String s2 = findPalindrome(charArr, i, i + 1);
             if (s1.length() > palindrome.length()) {
                 palindrome = s1;
             }
@@ -28,12 +28,12 @@ public class LeetCode5 {
         return palindrome;
     }
 
-    public static String findPalindrome(String s, int L, int R) {
-        char[] charArr = s.toCharArray();
+    public static String findPalindrome(char[] charArr, int L, int R) {
         while (L >= 0 && R < charArr.length && charArr[L] == charArr[R]) {
             L--;
             R++;
         }
-        return s.substring(L + 1, R);
+        return String.valueOf(charArr, L + 1, R - L - 1);
     }
+
 }
